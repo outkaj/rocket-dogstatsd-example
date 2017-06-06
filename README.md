@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Systems programming language [Rust](https://www.rust-lang.org/en-US/) is gaining more widespread use [in production](https://www.rust-lang.org/en-US/friends.html). A [stable Rust Dogstatsd client also now exists](https://github.com/mcasper/dogstatsd-rs), allowing the monitoring of custom metrics for Rust applications in Datadog. Finally, Rust has been [developing its web ecosystem](http://www.arewewebyet.org) to reach parity with other major languages.
+Systems programming language [Rust](https://www.rust-lang.org/en-US/) is gaining more widespread use [in production](https://www.rust-lang.org/en-US/friends.html). A [stable Rust DogStatsD client also now exists](https://github.com/mcasper/dogstatsd-rs), allowing the monitoring of custom metrics for Rust applications in Datadog. Finally, Rust has been [developing its web ecosystem](http://www.arewewebyet.org) to reach parity with other major languages.
 
-In this tutorial, we'll draw on these new developments to build a Rust web application using the [Rocket server framework](https://rocket.rs). Then we'll integrate our app with the Dogstatsd client to report metrics. Finally, we'll take a look at the graphs of our metrics in Datadog.
+In this tutorial, we'll draw on these new developments to build a Rust web application using the [Rocket server framework](https://rocket.rs). Then we'll integrate our app with the DogStatsD client to report metrics. Finally, we'll take a look at the graphs of our metrics in Datadog.
 
 ## Part 0: Dependencies
 
