@@ -254,7 +254,7 @@ Now, let's head over to the Datadog Metric Explorer to visualize the metrics we'
 As we expected, there's a sudden uptick at around 19:52 when we reloaded the
 page 16 times, but the rest of the graph is flat.
 
-![Web Page Views](screenshots/Web\ Page\ Views.png "Web Page Views")
+[![](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Web%20Page%20Views.png)](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Web%20Page%20Views.png)
 
 What about our database queries? As described in the [DogStatsD docs](http://docs.datadoghq.com/guides/metrics/), creating a single histogram gives us 5 graphs to
 visualize in the Metrics Explorer. Some of these graphs contain minimal information given the small size of our database, but it's useful to run through them nonetheless as a proof of concept.
@@ -267,19 +267,19 @@ metric was sampled - 0.53 on average in our case.
 Second, `analytics.database.query.time.avg` tells us the average time of the sampled values - 0
 in our case.
 
- ![Database Query Time Average](screenshots/Database\ Query\ Time\ Avg.png "Database Query Time Average")
+[![](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%20Avg.png)](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%20Avg.png)
 
 Third, `analytics.database.query.time.median` tells us the median sampled value, which is also 0.
 
- ![Database Query Time Median](screenshots/Database\ Query\ Time\ Median.png "Database Query Time Median")
+[![](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%20Median.png)](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%20Median.png)
 
 Fourth, `analytics.database.query.time.max` tells us the maximum sampled value - also 0.
 
-![Database Query Time Max](screenshots/Database\ Query\ Time\ Max.png "Database Query Time Maximum")
+[![](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%20Max.png)](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%20Max.png)
 
 Finally, `analytics.database.query.time.95percentile` tells us the 95th percentile sampled value, which is also 0.
 
-![Database Query Time 95th Percentile](screenshots/Database\ Query\ Time\ 95th\ Percentile.png "Database Query Time 95th Percentile")
+[![](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%2095th%20Percentile.png)](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%2095th%20Percentile.png)
 
 Again, for a larger database, you'll see more variation in your results.
 
