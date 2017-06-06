@@ -254,7 +254,7 @@ Now, let's head over to the Datadog Metric Explorer to visualize the metrics we'
 As we expected, there's a sudden uptick at around 19:52 when we reloaded the
 page 16 times, but the rest of the graph is flat.
 
-![Web Page Views](screenshots/Web\ Page\ Views.png?raw=true "Web Page Views")
+![Web Page Views](screenshots/Web\ Page\ Views.png "Web Page Views")
 
 What about our database queries? As described in the [DogStatsD docs](http://docs.datadoghq.com/guides/metrics/), creating a single histogram gives us 5 graphs to
 visualize in the Metrics Explorer. Some of these graphs contain minimal information given the small size of our database, but it's useful to run through them nonetheless as a proof of concept.
@@ -262,24 +262,24 @@ visualize in the Metrics Explorer. Some of these graphs contain minimal informat
 First, `analytics.database.query.time.count` tells us the number of times the
 metric was sampled - 0.53 on average in our case.
 
-![Database Query Time Count](screenshots/Database\ Query\ Time\ Count.png?raw=true "Database Query Time Count")
+![Database Query Time Count](screenshots/Database\ Query\ Time\ Count.png "Database Query Time Count")
 
 Second, `analytics.database.query.time.avg` tells us the average time of the sampled values - 0
 in our case.
 
- ![Database Query Time Average](screenshots/Database\ Query\ Time\ Avg.png?raw=true "Database Query Time Average")
+ ![Database Query Time Average](screenshots/Database\ Query\ Time\ Avg.png "Database Query Time Average")
 
 Third, `analytics.database.query.time.median` tells us the median sampled value, which is also 0.
 
- ![Database Query Time Median](screenshots/Database\ Query\ Time\ Median.png?raw=true "Database Query Time Median")
+ ![Database Query Time Median](screenshots/Database\ Query\ Time\ Median.png "Database Query Time Median")
 
 Fourth, `analytics.database.query.time.max` tells us the maximum sampled value - also 0.
 
-![Database Query Time Max](screenshots/Database Query\ Time\ Max.png?raw=true "Database Query Time Maximum")
+![Database Query Time Max](screenshots/Database\ Query\ Time\ Max.png "Database Query Time Maximum")
 
 Finally, `analytics.database.query.time.95percentile` tells us the 95th percentile sampled value, which is also 0.
 
-![Database Query Time 95th Percentile](screenshots/Database\ Query\ Time\ 95th\ Percentile.png?raw=true "Database Query Time 95th Percentile")
+![Database Query Time 95th Percentile](screenshots/Database\ Query\ Time\ 95th\ Percentile.png "Database Query Time 95th Percentile")
 
 Again, for a larger database, you'll see more variation in your results.
 
