@@ -42,13 +42,82 @@ Let's quickly run through what these files do in case you're unfamiliar. Cargo.l
 
 Here's what our `Cargo.toml` will look like. Note that we specify the most recent version of the Rocket library (0.2.8), as the Rocket project is frequently changing.
 
-<script src="https://gist.github.com/outkaj/403b6230efd7e31f6ab21586f5c9ff67.js"></script>
+```
+[package]
+name = "rocket_dogstatsd_example"
+version = "0.0.1"
+authors = ["Jacqueline Outka"]
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[dependencies]
+rocket = "0.2.8"
+rocket_codegen = "0.2.8"
+rocket_contrib = "0.2.8"
+rusqlite = "*"
+```
 
 Now let's take a look at the main application logic. Our Rocket web app will create a SQLite database, store the entry "Datadog" in the database, and display that entry at `http://localhost:8000` when run.
 
 Here's the `main.rs`:
 
-<script src="https://gist.github.com/outkaj/4663f4e9791bceba1498adb80845992f.js"></script>
+```
+#![feature(plugin)]
+#![plugin(rocket_codegen)]
+
+// References to the application's "crates", or libraries, are gathered here
+extern crate rocket;
+extern crate rusqlite;
+
+// Import statements go here
+use dogstatsd::{Client, Options};
+use std::sync::Mutex;
+use rocket::{Rocket, State};
+use rusqlite::{Connection, Error};
+
+type DbConn = Mutex<Connection>;
+
+// Create the database and insert the single "Datadog" entry
+fn init_database(conn: &Connection) {
+    conn.execute("CREATE TABLE entries (
+                  id              INTEGER PRIMARY KEY,
+                  name            TEXT NOT NULL
+                  )", &[])
+        .expect("create entries table");
+    conn.execute("INSERT INTO entries (id, name) VALUES ($1, $2)",
+            &[&0, &"Datadog"])
+        .expect("insert single entry into entries table");
+}
+
+// Create a route for Rocket and specify what response is returned
+#[get("/")]
+fn hello(db_conn: State<DbConn>) -> Result<String, Error>  {
+    let result = db_conn.lock()
+        .expect("db connection lock")
+        .query_row("SELECT name FROM entries WHERE id = 0",
+                   &[], |row| { row.get(0) });
+    result
+}
+
+// Set up the database and mount the Rocket application
+fn rocket() -> Rocket {
+    // Open the database.
+    let conn = Connection::open_in_memory().expect("in memory db");
+    // Initialize the `entries` table
+    init_database(&conn);
+    // Tell Rocket to manage the database pool
+    rocket::ignite()
+        .manage(Mutex::new(conn))
+        .mount("/", routes![hello])
+}
+
+fn main() {
+    // Start the application
+    rocket().launch();
+    }
+```
 
 We can use the `cargo run` command to compile and run our application.
 
