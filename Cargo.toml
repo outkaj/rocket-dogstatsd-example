@@ -1,0 +1,15 @@
+[package]
+name = "rocket-dogstatsd-example"
+version = "0.0.1"
+authors = ["Jacqueline Outka"]
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+[dependencies]
+rocket = "0.2.8"
+rocket_codegen = "0.2.8"
+rocket_contrib = "0.2.8"
+rusqlite = "*"
+dogstatsd = "0.1"
