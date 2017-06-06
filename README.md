@@ -262,7 +262,7 @@ visualize in the Metrics Explorer. Some of these graphs contain minimal informat
 First, `analytics.database.query.time.count` tells us the number of times the
 metric was sampled - 0.53 on average in our case.
 
-[![Database Query Time Count](screenshots/Database\ Query\ Time\ Count.png)](Database Query Time Count)
+[![](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%20Count.png)](https://github.com/outkaj/rocket-dogstatsd-example/blob/master/screenshots/Database%20Query%20Time%20Count.png)
 
 Second, `analytics.database.query.time.avg` tells us the average time of the sampled values - 0
 in our case.
